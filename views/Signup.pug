@@ -1,0 +1,69 @@
+extends layout
+
+block content
+  div(class="container-shadow")
+  div(class="container")
+    div(class="wrap")
+      div(class="headings")
+        a(id="sign-in" href="#" class="active")
+          span Student
+        a(id="sign-up" href="#")
+          span Teacher
+      div(id="sign-in-form")
+        form(method="post" action="/students/signup")
+          label Full Name
+          input(id="username" type="text" name="name" required="required")
+          label Email
+          input(id="username" type="email" name="email" required='required')
+          label DOB
+          input(id="username" type="date" name="DOB" required="required")
+          label Collage
+          input(id="username" type="text" name="collage" required="required")
+          label Branch/stream
+          input(id="username" type="text" name="branch" required="required")
+          label Password
+          input(id="password" type="password" minlength="6" name="password" required="required")
+          label Re-Enter Password
+          input(id="password" type="password" name="Repassword" required="required")
+          input(type="submit" class="button" name="submit" value="Create")
+        footer
+          div(class="hr")
+      div(id="sign-up-form")
+        form(method="post" action="/teachers/signup")
+          label Full Name
+          input(id="username" type="text" name="name" required="required")
+          label Email
+          input(id="username" type="email" name="email" required="required")
+          label DOB
+          input(id="username" type="date" name="DOB" required="required")
+          label Experience
+          input(id="username" type="number" name="experience" required="required")
+          label Qualification
+          input(id="username" type="text" name="qualification" required="required")
+          label Password
+          input(id="password" type="password" minlength="6" name="password" required="required")
+          label Re-Enter Password
+          input(id="password" type="password" name="Repassword" required="required")
+          input(type="submit" class="button" name="submit" value="Create")
+        footer
+          div(class="hr")
+  script.
+    $(document).ready(function () {
+    $("#sign-up").click(function () {
+      $("#sign-in").removeClass("active");
+      $("#sign-in-form").hide();
+      $("#sign-up").addClass("active");
+      $("#sign-up-form").show();
+    });
+    $("#sign-in").click(function () {
+      $("#sign-in").addClass("active");
+      $("#sign-in-form").show();
+      $("#sign-up").removeClass("active");
+      $("#sign-up-form").hide();
+    });
+    });
+  if msg
+    div(id="msg" style="display:none") #{msg}
+    script.
+      var msg=document.getElementById('msg').innerHTML;
+      window.alert(msg);

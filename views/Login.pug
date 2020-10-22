@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div(class="container-shadow")
+  div(class="container")
+    div(class="wrap")
+      div(class="headings")
+        a(id="sign-in" href="#" class="active")
+          span Login
+      div(id="sign-in-form")
+        form
+          label Email
+          input(id="username" type="email" name="email" required='required')
+          label Password
+          input(id="password" type="password" minlength="6" name="password" required="required")
+          input(type="submit" class="button" name="submit" value="Sign In")
+        footer
+          div(class="hr")
+          <div class="fp"><a href="/signup">Don't have an account ? Sign UP here.</a></div>
+  if msg
+    div(id="msg" style="display:none") #{msg}
+    script.
+      var msg=document.getElementById('msg').innerHTML;
+      window.alert(msg);
