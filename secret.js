@@ -1,1 +1,0 @@
-exports.mogoKey="mongodb+srv://todotask:1234@cluster0-nvb5o.mongodb.net/Navigus?retryWrites=true&w=majority";
