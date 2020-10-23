@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const teachersRouter = require('./routes/teachers');
 const studentsRouter=require("./routes/students");
 const db=require("./lib/database");
+const Auth=require('./lib/Auth');
 
 const app = express();
 db.connect();

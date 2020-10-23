@@ -1,0 +1,19 @@
+include index.pug
+div(class="heading") Course
+if data
+  each value in data
+    div(class="card")
+        div(class="material-icons icons" style="font-size:70px !important ;padding-right:10px;") explore
+        div #{value.coursename}
+          div(class="subtext") -Level : #{value.level}
+          div(class="subtext") -By : Mr. #{value.teachername}
+        a(href="students/take/quiz/"+value._id id=value._id class="deletebutton" style="color:black;right:80px;") Start
+script.
+  $.get("/students/get/user",function(data,status){
+    for(var i=0;i<data.length;i++){
+      var val=document.getElementById(data[i].courseid);
+      val.innerHTML="completed : "+data[i].marks+" points";
+      val.href="";
+      val.style.cssText="font-size:24px !important;color:black;right:80px;";
+    }
+  })

@@ -1,0 +1,13 @@
+include index.pug
+div(class="heading") My Course
+if data
+  each value in data
+    div(class="card")
+        div(class="material-icons icons" style="font-size:70px !important ;padding-right:10px;") explore
+        div #{value.coursename}
+          div(class="subtext") -Level : #{value.level}
+          div(class="subtext") -By : Mr. #{value.teachername}
+        a(href="/teachers/course/edit/"+value._id class="material-icons deletebutton" style="color:black;right:80px;") edit
+        a(href="/teachers/course/delete/"+value._id class="material-icons deletebutton" style="color:black;") delete_forever
+
+a(class='addcourse' href="/teachers/add/course") ADD NEW

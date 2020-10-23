@@ -8,7 +8,7 @@ block content
         a(id="sign-in" href="#" class="active")
           span Login
       div(id="sign-in-form")
-        form
+        form(method="post",action="/login")
           label Email
           input(id="username" type="email" name="email" required='required')
           label Password

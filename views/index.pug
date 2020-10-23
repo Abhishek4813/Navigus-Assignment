@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  ul(class="navlist")
+    li(class="navli")
+      a(href="/profile")
+        div(class="material-icons not-active-icon profile-btn") person
+        span Abhishek Kumar
+    li(class="navli")
+      a(href="/logout") Logout
+            

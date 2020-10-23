@@ -1,0 +1,36 @@
+include index.pug
+div(class="heading") #{course.coursename}
+if course.quiz.length>0
+  -n=0;
+  each value in course.quiz
+    div(class="card")
+        div(style="font-size:70px !important ;padding-right:10px;") Q#{++n}
+        div #{value.question}
+        a( href="/teachers/question/edit/"+course._id+"/"+value._id class="material-icons deletebutton" style="color:black;right:80px;") edit
+        a( href="/teachers/question/delete/"+course._id+"/"+value._id class="material-icons deletebutton" style="color:black;") delete_forever
+a(class='addcourse') ADD MORE
+
+div(class="container-shadow addcourseform")
+  div(class="container")
+    div(class="wrap")
+      div(class="headings")
+        a(id="sign-in" href="#" class="active")
+          span Edit Quiz question
+      div(id="sign-in-form")
+        form(method="post",action="/teachers/update/question/")
+          input(type="text" style="display:none" name="courseid" value=course._id)
+          input(type="text" style="display:none" name="quizid" value=course.quiz[0]._id)
+          label Question
+          textarea(rows="5" cols="52" name="question"  required='required') #{course.quiz[0].question}
+          label Options
+          each val in course.quiz[0].option
+            input(id="text" type="text" name="option" value=val required="required")
+          label Answers
+          each ans in course.quiz[0].answer
+            input(id="text" type="number" name="answer" value=ans min="1" max="4" required="required")
+          div(id="add_here")
+          div(class="add-more-answer" onclick="addMoreAns()") +
+          label Points
+          input(id="text" type="number" value=course.quiz[0].point name="point" min="1" max="10" required="required")
+          input(type="submit" class="button" name="submit" value="UPDATE")
+    a(class="form-back" href="/teachers/course/edit/"+course._id) Back

@@ -1,0 +1,17 @@
+include index.pug
+div(class="heading") #{course.coursename}
+if course.quiz.length>0
+  -n=0;
+  form(method="post", action="/students/quiz/submit/"+course._id)
+    each value in course.quiz
+        div(class="card student-card")
+            div(style="font-size:70px !important ;padding-right:10px;") Q#{++n}
+            div(class="question-statement")
+                div(style="margin-bottom:30px; font-weight:bold;") #{value.question}
+                div
+                    -v=0;
+                    each opt in value.option
+                        input(type="checkbox" class="check-option" name=value._id value=++v) 
+                        label(class="check-level") #{opt}
+                        br
+    input(type="submit" class='addcourse submit-quiz')

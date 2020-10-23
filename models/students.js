@@ -6,7 +6,11 @@ const studentsschema=new mongoose.Schema({
   DOB:Date,
   collage:String,
   branch:String,
-  password:String,  
+  password:String,
+  enrolled:[{
+    courseid:String,
+    marks:Number,
+  }]  
 });
 const studentsmodel=mongoose.model('students',studentsschema);
 module.exports=studentsmodel;

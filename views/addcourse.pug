@@ -1,0 +1,15 @@
+include teacherDash.pug
+div(class="container-shadow addcourseform")
+  div(class="container")
+    div(class="wrap")
+      div(class="headings")
+        a(id="sign-in" href="#" class="active")
+          span ADD COURSE
+      div(id="sign-in-form")
+        form(method="post",action="/teachers/add/course")
+          label Course Name
+          input(id="username" type="text" name="course" required='required')
+          label Level
+          input(id="password" type="text" name="level" required="required")
+          input(type="submit" class="button" name="submit" value="ADD")
+    a(class="form-back" href="/") Back
